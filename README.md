@@ -8,3 +8,16 @@ A sandbox project for [google/wire](https://github.com/google/wire)
 - update wire.go
 - `make wire` to re-generate wire_gen.go
 - check wire_gen.go
+
+## Build this app
+```bash
+make build
+```
+
+`main` file to be created.
+
+execute main
+```bash
+./main
+
+```

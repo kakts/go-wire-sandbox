@@ -5,3 +5,7 @@ generate:
 .PHONY: wire
 wire:
 	wire
+
+.PHONY: build
+build:
+	go build -o main

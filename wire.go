@@ -9,7 +9,7 @@ import (
 )
 
 // Eventの生成
-func InitilizeEvent() (model.Event, error) {
+func InitializeEvent() (model.Event, error) {
 	wire.Build(model.NewEvent, model.NewGreeter, model.NewMessage)
 	return model.Event{}, nil
 }
