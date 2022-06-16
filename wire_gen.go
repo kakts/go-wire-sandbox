@@ -13,8 +13,8 @@ import (
 // Injectors from wire.go:
 
 // Eventの生成
-func InitializeEvent() (model.Event, error) {
-	message := model.NewMessage()
+func InitializeEvent(phrase string) (model.Event, error) {
+	message := model.NewMessage(phrase)
 	greeter := model.NewGreeter(message)
 	event, err := model.NewEvent(greeter)
 	if err != nil {

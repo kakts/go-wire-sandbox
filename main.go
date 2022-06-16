@@ -12,7 +12,7 @@ func main() {
 	// e := model.NewEvent(greeter)
 
 	// wireのInjectorによる依存性注入
-	e, err := InitializeEvent()
+	e, err := InitializeEvent("test phrase")
 	if err != nil {
 		fmt.Printf("failed to create event: %s\n", err)
 		os.Exit(2)

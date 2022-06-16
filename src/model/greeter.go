@@ -30,8 +30,8 @@ func (e Event) Start() {
 }
 
 // Messageを返すもの　依存関係なし
-func NewMessage() Message {
-	return Message("Hi There!")
+func NewMessage(phrasa string) Message {
+	return Message(phrasa)
 }
 
 // Greeterを返すもの。 依存関係としてMessageを持っている
