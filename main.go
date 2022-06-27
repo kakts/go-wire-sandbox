@@ -30,4 +30,7 @@ func main() {
 	}
 	fmt.Println("----")
 	fmt.Println(baz.X)
+
+	bar := InitializeBar()
+	fmt.Println(bar)
 }

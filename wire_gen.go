@@ -35,3 +35,17 @@ func InitializeBaz(ctx context.Context) (foobarbaz.Baz, error) {
 	}
 	return baz, nil
 }
+
+func InitializeBar() string {
+	myFooer := model.ProvideMyFooer()
+	string2 := model.ProvideBar(myFooer)
+	return string2
+}
+
+// wire.go:
+
+// model.MyFooerの生成
+// TODO
+type test struct {
+	f model.Fooer
+}

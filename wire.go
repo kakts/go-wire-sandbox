@@ -25,7 +25,13 @@ func InitializeBaz(ctx context.Context) (foobarbaz.Baz, error) {
 }
 
 // model.MyFooerの生成
-// func InitializeBar() (*model.Bar, error) {
-// 	wire.Build(model.MyFooerSet)
-// 	return model.Bar("aaa"), nil
-// }
+// TODO
+type test struct {
+	f model.Fooer
+}
+
+func InitializeBar() string {
+	wire.Build(model.MyFooerSet)
+	// 戻り値の値は型があっていればなんでも良い
+	return ""
+}
