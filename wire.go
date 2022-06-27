@@ -23,3 +23,9 @@ func InitializeBaz(ctx context.Context) (foobarbaz.Baz, error) {
 	wire.Build(foobarbaz.FooBarBazSet)
 	return foobarbaz.Baz{}, nil
 }
+
+// model.MyFooerの生成
+// func InitializeBar() (*model.Bar, error) {
+// 	wire.Build(model.MyFooerSet)
+// 	return model.Bar("aaa"), nil
+// }

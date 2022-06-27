@@ -1,9 +1,12 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 )
+
+type Bar string
 
 func main() {
 	// 依存関係を手動で注入
@@ -19,4 +22,12 @@ func main() {
 	}
 
 	e.Start()
+
+	baz, err := InitializeBaz(context.Background())
+	if err != nil {
+		fmt.Printf("failed to create Baz: %s\n", err)
+		os.Exit(2)
+	}
+	fmt.Println("----")
+	fmt.Println(baz.X)
 }
