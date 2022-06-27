@@ -1,5 +1,5 @@
 .PHONY: generate
-generate:
+generate: # wireのコードも生成される。
 	go generate ./...
 
 .PHONY: wire

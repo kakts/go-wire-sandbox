@@ -7,6 +7,8 @@
 package main
 
 import (
+	"context"
+	"github.com/kakts/go-wire-sandbox/src/foobarbaz"
 	"github.com/kakts/go-wire-sandbox/src/model"
 )
 
@@ -21,4 +23,15 @@ func InitializeEvent(phrase string) (model.Event, error) {
 		return model.Event{}, err
 	}
 	return event, nil
+}
+
+// Bazの生成
+func InitializeBaz(ctx context.Context) (foobarbaz.Baz, error) {
+	foo := foobarbaz.ProvideFoo()
+	bar := foobarbaz.ProvideBar(foo)
+	baz, err := foobarbaz.ProvideBaz(ctx, bar)
+	if err != nil {
+		return foobarbaz.Baz{}, err
+	}
+	return baz, nil
 }
