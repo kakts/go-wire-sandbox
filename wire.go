@@ -7,6 +7,7 @@ import (
 	"context"
 
 	"github.com/google/wire"
+	"github.com/kakts/go-wire-sandbox/src/foobar"
 	"github.com/kakts/go-wire-sandbox/src/foobarbaz"
 	"github.com/kakts/go-wire-sandbox/src/model"
 )
@@ -34,4 +35,9 @@ func InitializeBar() string {
 	wire.Build(model.MyFooerSet)
 	// 戻り値の値は型があっていればなんでも良い
 	return ""
+}
+
+func InitializeFooBar() foobar.FooBar {
+	wire.Build(foobar.Set)
+	return foobar.FooBar{}
 }

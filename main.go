@@ -33,4 +33,8 @@ func main() {
 
 	bar := InitializeBar()
 	fmt.Println(bar)
+
+	foobar := InitializeFooBar()
+	fmt.Println(foobar.MyBar)
+	fmt.Println(foobar.MyFoo)
 }

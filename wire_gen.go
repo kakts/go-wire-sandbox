@@ -8,6 +8,7 @@ package main
 
 import (
 	"context"
+	"github.com/kakts/go-wire-sandbox/src/foobar"
 	"github.com/kakts/go-wire-sandbox/src/foobarbaz"
 	"github.com/kakts/go-wire-sandbox/src/model"
 )
@@ -40,6 +41,16 @@ func InitializeBar() string {
 	myFooer := model.ProvideMyFooer()
 	string2 := model.ProvideBar(myFooer)
 	return string2
+}
+
+func InitializeFooBar() foobar.FooBar {
+	foo := foobar.ProvideFoo()
+	bar := foobar.ProvideBar()
+	fooBar := foobar.FooBar{
+		MyFoo: foo,
+		MyBar: bar,
+	}
+	return fooBar
 }
 
 // wire.go:
