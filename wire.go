@@ -10,6 +10,7 @@ import (
 	"github.com/kakts/go-wire-sandbox/src/foobar"
 	"github.com/kakts/go-wire-sandbox/src/foobarbaz"
 	"github.com/kakts/go-wire-sandbox/src/model"
+	"github.com/kakts/go-wire-sandbox/src/value"
 )
 
 // Eventの生成
@@ -40,4 +41,9 @@ func InitializeBar() string {
 func InitializeFooBar() foobar.FooBar {
 	wire.Build(foobar.Set)
 	return foobar.FooBar{}
+}
+
+func InitializeValueFoo() value.Foo {
+	wire.Build(wire.Value(value.Foo{X: 42}))
+	return value.Foo{}
 }

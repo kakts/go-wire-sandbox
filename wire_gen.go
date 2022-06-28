@@ -11,6 +11,7 @@ import (
 	"github.com/kakts/go-wire-sandbox/src/foobar"
 	"github.com/kakts/go-wire-sandbox/src/foobarbaz"
 	"github.com/kakts/go-wire-sandbox/src/model"
+	"github.com/kakts/go-wire-sandbox/src/value"
 )
 
 // Injectors from wire.go:
@@ -52,6 +53,15 @@ func InitializeFooBar() foobar.FooBar {
 	}
 	return fooBar
 }
+
+func InitializeValueFoo() value.Foo {
+	foo := _wireFooValue
+	return foo
+}
+
+var (
+	_wireFooValue = value.Foo{X: 42}
+)
 
 // wire.go:
 
