@@ -8,6 +8,7 @@ package main
 
 import (
 	"context"
+	"github.com/kakts/go-wire-sandbox/src/field"
 	"github.com/kakts/go-wire-sandbox/src/foobar"
 	"github.com/kakts/go-wire-sandbox/src/foobarbaz"
 	"github.com/kakts/go-wire-sandbox/src/model"
@@ -62,6 +63,20 @@ func InitializeValueFoo() value.Foo {
 var (
 	_wireFooValue = value.Foo{X: 42}
 )
+
+// Foo.SのインジェクションのプロバイダーにGetSを使う場合
+func InitializeFieldFoo1() string {
+	foo := field.ProvideFoo()
+	string2 := field.GetS(foo)
+	return string2
+}
+
+// Foo.SのインジェクションのプロバイダーにGetSを使わず、wire.FieldsOfを使う場合
+func InitializeFieldFoo2() string {
+	foo := field.ProvideFoo()
+	string2 := foo.S
+	return string2
+}
 
 // wire.go:
 

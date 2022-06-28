@@ -40,4 +40,10 @@ func main() {
 
 	valueFoo := InitializeValueFoo()
 	fmt.Println(valueFoo)
+
+	fieldFoo1 := InitializeFieldFoo1()
+	fmt.Println(fieldFoo1)
+
+	fieldFoo2 := InitializeFieldFoo2()
+	fmt.Println(fieldFoo2)
 }

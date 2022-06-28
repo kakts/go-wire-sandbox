@@ -7,6 +7,7 @@ import (
 	"context"
 
 	"github.com/google/wire"
+	"github.com/kakts/go-wire-sandbox/src/field"
 	"github.com/kakts/go-wire-sandbox/src/foobar"
 	"github.com/kakts/go-wire-sandbox/src/foobarbaz"
 	"github.com/kakts/go-wire-sandbox/src/model"
@@ -46,4 +47,22 @@ func InitializeFooBar() foobar.FooBar {
 func InitializeValueFoo() value.Foo {
 	wire.Build(wire.Value(value.Foo{X: 42}))
 	return value.Foo{}
+}
+
+// Foo.SのインジェクションのプロバイダーにGetSを使う場合
+func InitializeFieldFoo1() string {
+	wire.Build(
+		field.ProvideFoo,
+		field.GetS,
+	)
+	return ""
+}
+
+// Foo.SのインジェクションのプロバイダーにGetSを使わず、wire.FieldsOfを使う場合
+func InitializeFieldFoo2() string {
+	wire.Build(
+		field.ProvideFoo,
+		wire.FieldsOf(new(field.Foo), "S"),
+	)
+	return ""
 }
