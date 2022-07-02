@@ -20,8 +20,8 @@ import (
 // Eventの生成
 func InitializeEvent(phrase string) (model.Event, error) {
 	message := model.NewMessage(phrase)
-	greeter := model.NewGreeter(message)
-	event, err := model.NewEvent(greeter)
+	modelGreeter := model.NewGreeter(message)
+	event, err := model.NewEvent(modelGreeter)
 	if err != nil {
 		return model.Event{}, err
 	}
@@ -76,6 +76,51 @@ func InitializeFieldFoo2() string {
 	foo := field.ProvideFoo()
 	string2 := foo.S
 	return string2
+}
+
+func initApp() *app {
+	mainTimer := _wireRealTimeValue
+	mainGreeter := greeter{
+		T: mainTimer,
+	}
+	mainApp := &app{
+		g: mainGreeter,
+	}
+	return mainApp
+}
+
+var (
+	_wireRealTimeValue = realTime{}
+)
+
+// initMockedAppFromArgs
+// アプローチA用に、引数によって渡されたモック化された依存パッケージを利用するアプリを返します。
+// 引数の型は、具体型でなくインタフェース(timer)ですが、実際の具体的なモック型を渡す必要があります。
+func initMockedAppFromArgs(mt timer) *app {
+	mainGreeter := greeter{
+		T: mt,
+	}
+	mainApp := &app{
+		g: mainGreeter,
+	}
+	return mainApp
+}
+
+// initMockedApp
+// アプローチB用に、プロバイダーによって作成されたモックを利用したアプリを返します
+func initMockedApp() *appWithMocks {
+	mainMockTimer := newMockTimer()
+	mainGreeter := greeter{
+		T: mainMockTimer,
+	}
+	mainApp := app{
+		g: mainGreeter,
+	}
+	mainAppWithMocks := &appWithMocks{
+		app: mainApp,
+		mt:  mainMockTimer,
+	}
+	return mainAppWithMocks
 }
 
 // wire.go:

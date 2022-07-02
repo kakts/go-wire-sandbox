@@ -66,3 +66,26 @@ func InitializeFieldFoo2() string {
 	)
 	return ""
 }
+
+// mock用
+// https://github.com/google/wire/blob/main/internal/wire/testdata/ExampleWithMocks/foo/wire.go
+
+func initApp() *app {
+	wire.Build(appSet)
+	return nil
+}
+
+// initMockedAppFromArgs
+// アプローチA用に、引数によって渡されたモック化された依存パッケージを利用するアプリを返します。
+// 引数の型は、具体型でなくインタフェース(timer)ですが、実際の具体的なモック型を渡す必要があります。
+func initMockedAppFromArgs(mt timer) *app {
+	wire.Build(appSetWithoutMocks)
+	return nil
+}
+
+// initMockedApp
+// アプローチB用に、プロバイダーによって作成されたモックを利用したアプリを返します
+func initMockedApp() *appWithMocks {
+	wire.Build(mockAppSet)
+	return nil
+}
