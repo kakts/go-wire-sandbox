@@ -89,3 +89,27 @@ func initMockedApp() *appWithMocks {
 	wire.Build(mockAppSet)
 	return nil
 }
+
+// Dogのオーナー
+var dogOwnerSet = wire.NewSet(
+	model.ProvideDog,
+	wire.Bind(new(model.Animal), new(model.Dog)),
+	model.ProvideOwner,
+)
+
+func initializeDogOwner() model.Owner {
+	wire.Build(dogOwnerSet)
+	return model.Owner{}
+}
+
+// Catのオーナー
+var catOwnerSet = wire.NewSet(
+	model.ProvideCat,
+	wire.Bind(new(model.Animal), new(model.Cat)),
+	model.ProvideOwner,
+)
+
+func initializeCatOwner() model.Owner {
+	wire.Build(catOwnerSet)
+	return model.Owner{}
+}

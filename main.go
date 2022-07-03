@@ -70,6 +70,14 @@ func main() {
 	fmt.Println(appWithMocks.app.Greet())
 	appWithMocks.mt.T = appWithMocks.mt.T.AddDate(1999, 0, 0)
 	fmt.Println(appWithMocks.app.Greet())
+
+	// interface　DI用
+	// Dog owner と Cat ownerのテスト
+	dogOwner := initializeDogOwner()
+	fmt.Println(dogOwner.Animal.Bark())
+
+	catOwner := initializeCatOwner()
+	fmt.Println(catOwner.Animal.Bark())
 }
 
 // appSetは実際のアプリを作成するためのプロバイダーセットでsう

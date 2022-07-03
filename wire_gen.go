@@ -8,6 +8,7 @@ package main
 
 import (
 	"context"
+	"github.com/google/wire"
 	"github.com/kakts/go-wire-sandbox/src/field"
 	"github.com/kakts/go-wire-sandbox/src/foobar"
 	"github.com/kakts/go-wire-sandbox/src/foobarbaz"
@@ -123,6 +124,18 @@ func initMockedApp() *appWithMocks {
 	return mainAppWithMocks
 }
 
+func initializeDogOwner() model.Owner {
+	dog := model.ProvideDog()
+	owner := model.ProvideOwner(dog)
+	return owner
+}
+
+func initializeCatOwner() model.Owner {
+	cat := model.ProvideCat()
+	owner := model.ProvideOwner(cat)
+	return owner
+}
+
 // wire.go:
 
 // model.MyFooerの生成
@@ -130,3 +143,9 @@ func initMockedApp() *appWithMocks {
 type test struct {
 	f model.Fooer
 }
+
+// Dogのオーナー
+var dogOwnerSet = wire.NewSet(model.ProvideDog, wire.Bind(new(model.Animal), new(model.Dog)), model.ProvideOwner)
+
+// Catのオーナー
+var catOwnerSet = wire.NewSet(model.ProvideCat, wire.Bind(new(model.Animal), new(model.Cat)), model.ProvideOwner)
