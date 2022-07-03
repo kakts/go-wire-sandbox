@@ -113,3 +113,8 @@ func initializeCatOwner() model.Owner {
 	wire.Build(catOwnerSet)
 	return model.Owner{}
 }
+
+func initializeMockDogOwner() model.Owner {
+	wire.Build(model.MockDogOwnerSet)
+	return model.Owner{}
+}

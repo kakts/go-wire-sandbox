@@ -13,3 +13,11 @@ build:
 .PHONY: run
 run:
 	./main
+
+.PHONY: test
+test:
+	go test ./...
+
+.PHONY: testv
+testv:
+	go test -v ./...

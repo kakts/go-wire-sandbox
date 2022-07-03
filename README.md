@@ -21,3 +21,13 @@ execute main
 ./main
 
 ```
+
+## Test app
+```bash
+make test
+```
+
+If you want to test with verbose mode
+```bash
+make testv
+```
